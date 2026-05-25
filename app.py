@@ -456,7 +456,7 @@ def _color_estado(val):
 
 styled_summary = summary.style\
     .format({"Banco": "{:,.0f}", "Payins estimados": "{:,.0f}", "Diferencia": "{:,.0f}", "Dif %": "{:+.1f}%"})\
-    .applymap(_color_estado, subset=["Estado"])
+    .map(_color_estado, subset=["Estado"])
 
 st.dataframe(styled_summary, use_container_width=True, hide_index=True)
 
@@ -476,7 +476,7 @@ detail_view = detail if filter_proc == "(Todos)" else detail[detail["Processor"]
 
 styled_detail = detail_view.style\
     .format({"Banco": "{:,.0f}", "Payins estimados": "{:,.0f}", "Diferencia": "{:,.0f}", "Dif %": "{:+.1f}%"})\
-    .applymap(_color_estado, subset=["Estado"])
+    .map(_color_estado, subset=["Estado"])
 
 st.dataframe(styled_detail, use_container_width=True, hide_index=True)
 
