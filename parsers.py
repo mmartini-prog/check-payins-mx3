@@ -409,9 +409,9 @@ def parse_payins(
     agent_col = find_column(df, ["Collection Agent", "Legal Entity", "Entity", "Company"])
     if agent_col:
         work["Collection Agent"] = df[agent_col].astype(str).str.strip()
-       mask = work["Collection Agent"].str.lower().apply(
-    lambda v: any(a in v for a in valid_agents) if isinstance(v, str) else False
-)
+        mask = work["Collection Agent"].str.lower().apply(
+            lambda v: any(a in v for a in valid_agents) if isinstance(v, str) else False
+        )
         excluded = (~mask).sum()
         if excluded:
             result.warnings.append(
